@@ -1,18 +1,19 @@
-.PHONY: build test clean restore publish setup docker-build docker-run docker-test help
+.PHONY: build test clean restore publish setup docker-build docker-run docker-test docker-hub-setup help
 
 # Default target
 help:
 	@echo "Available targets:"
-	@echo "  setup        - Setup development environment"
-	@echo "  build        - Build the project"
-	@echo "  test         - Run tests"
-	@echo "  clean        - Clean build artifacts"
-	@echo "  restore      - Restore dependencies"
-	@echo "  publish      - Create publish build"
-	@echo "  docker-build - Build Docker image"
-	@echo "  docker-run   - Run in Docker container"
-	@echo "  docker-test  - Run tests in Docker"
-	@echo "  help         - Show this help"
+	@echo "  setup           - Setup development environment"
+	@echo "  build           - Build the project"
+	@echo "  test            - Run tests"
+	@echo "  clean           - Clean build artifacts"
+	@echo "  restore         - Restore dependencies"
+	@echo "  publish         - Create publish build"
+	@echo "  docker-build    - Build Docker image"
+	@echo "  docker-run      - Run in Docker container"
+	@echo "  docker-test     - Run tests in Docker"
+	@echo "  docker-hub-setup - Show Docker Hub publishing setup guide"
+	@echo "  help            - Show this help"
 
 # Setup development environment
 setup:
@@ -58,3 +59,7 @@ docker-run:
 docker-test:
 	@echo "Running tests in Docker..."
 	docker-compose up gitchangesanalyzer-test
+
+docker-hub-setup:
+	@echo "Docker Hub publishing setup guide..."
+	@./scripts/docker-hub-setup.sh || ./scripts/docker-hub-setup.bat

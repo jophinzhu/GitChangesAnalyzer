@@ -29,8 +29,20 @@ dotnet build -c Release
 
 ### 🐳 Docker Installation (Recommended)
 
-The easiest way to run GitChangesAnalyzer is using Docker:
+#### Option 1: Use Pre-built Image from Docker Hub
+```bash
+# Pull and run the latest version
+docker pull yourusername/gitchangesanalyzer:latest
 
+# Analyze a commit in current repository
+docker run --rm \
+  -v "$(pwd):/workspace:ro" \
+  -v "$(pwd)/output:/app/output" \
+  yourusername/gitchangesanalyzer:latest \
+  --commit abc123 --verbose
+```
+
+#### Option 2: Build Locally
 ```bash
 # Build the Docker image
 ./scripts/docker-build.sh
@@ -246,6 +258,7 @@ Output: `./output/diff_analysis_abc123_20250611_143000.md`
 
 - **[Project Organization Guide](docs/PROJECT_ORGANIZATION.md)** - Detailed project structure and configuration reference
 - **[Docker Deployment Guide](docs/DOCKER.md)** - Complete Docker containerization guide
+- **[GitHub Docker Hub Setup](docs/GITHUB_DOCKER_SETUP.md)** - Automated Docker publishing with GitHub Actions
 - **[Contributing Guidelines](CONTRIBUTING.md)** - How to contribute to the project
 - **[Roadmap](docs/ROADMAP.md)** - Future development plans
 - **[Changelog](CHANGELOG.md)** - Version history and changes
