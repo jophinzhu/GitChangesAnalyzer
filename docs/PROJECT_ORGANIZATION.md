@@ -1,6 +1,6 @@
-# Project Organization Summary
+# Project Organization Guide
 
-This document provides an overview of the GitChangesAnalyzer project organization and structure.
+This document provides a comprehensive reference for the GitChangesAnalyzer project structure, configuration, and development workflow.
 
 ## 📁 Directory Structure
 

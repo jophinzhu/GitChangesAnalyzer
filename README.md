@@ -219,10 +219,21 @@ dotnet run -- --commit abc123 --verbose
 ```
 Output: `./output/diff_analysis_abc123_20250611_143000.md`
 
-## Contributing
+## 📚 Documentation
 
-This tool is part of the CSI development toolkit. For issues or enhancements, please follow the standard CSI development process.
+- **[Project Organization Guide](docs/PROJECT_ORGANIZATION.md)** - Detailed project structure and configuration reference
+- **[Contributing Guidelines](CONTRIBUTING.md)** - How to contribute to the project
+- **[Roadmap](docs/ROADMAP.md)** - Future development plans
+- **[Changelog](CHANGELOG.md)** - Version history and changes
 
-## License
+## 🤝 Contributing
 
-Internal tool for CSI development use.
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
+- Setting up the development environment
+- Building and testing
+- Submitting changes
+- Code style requirements
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
