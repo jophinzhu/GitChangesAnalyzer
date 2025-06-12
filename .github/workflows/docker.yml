@@ -9,6 +9,14 @@ on:
   release:
     types: [ published ]
 
+# Add permissions for security scanning
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+  id-token: write  # For OIDC
+  packages: write  # For container registry
+
 env:
   REGISTRY: docker.io
   IMAGE_NAME: gitchangesanalyzer
@@ -98,27 +106,21 @@ jobs:
         tags: |
           ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:dev
           ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest-dev
-        labels: ${{ steps.meta.outputs.labels }}
-        target: build
+        labels: ${{ steps.meta.outputs.labels }}        target: build
         cache-from: type=gha
         cache-to: type=gha,mode=max
-
-  security-scan:
-    needs: docker
-    runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
     
-    steps:
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-        format: 'sarif'
-        output: 'trivy-results.sarif'
-        severity: 'CRITICAL,HIGH'
-    
-    - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v3
-      if: always()
-      with:
-        sarif_file: 'trivy-results.sarif'
+    - name: Show build completion
+      run: |
+        echo "✅ Docker image build completed successfully!"
+        if [ "${{ github.event_name }}" != "pull_request" ]; then
+          echo "🚀 Images pushed to Docker Hub:"
+          echo "   - ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest"
+          if [ "${{ github.ref }}" == "refs/heads/main" ] || [ "${{ github.ref }}" == "refs/heads/master" ]; then
+            echo "   - ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:dev"
+          fi
+        else
+          echo "🔨 Image built for testing (not pushed on PR)"
+        fi
+        echo ""
+        echo "🔒 Security scanning will run in a separate workflow"
