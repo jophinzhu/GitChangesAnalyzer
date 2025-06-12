@@ -28,12 +28,11 @@ GitChangesAnalyzer/
 ├── scripts/                   # Build and utility scripts
 │   ├── Analyze-Commit.ps1     # PowerShell analysis script
 │   ├── analyze-commit.bat     # Batch analysis script
-│   ├── build.sh               # Unix build script
-│   ├── build.bat              # Windows build script
-│   ├── clean.sh               # Unix clean script
-│   ├── clean.bat              # Windows clean script
-│   ├── setup.sh               # Unix setup script
-│   └── setup.bat              # Windows setup script
+│   ├── build.sh & build.bat   # Cross-platform build scripts
+│   ├── clean.sh & clean.bat   # Cross-platform clean scripts
+│   ├── setup.sh & setup.bat   # Cross-platform setup scripts
+│   ├── docker-build.sh & .bat # Docker image build scripts
+│   └── docker-run.sh & .bat   # Docker container run scripts
 ├── tests/                     # Unit tests
 │   ├── ChangeAnalyzerTests.cs # Change analyzer tests
 │   ├── GitDiffParserTests.cs  # Git diff parser tests
@@ -45,6 +44,10 @@ GitChangesAnalyzer/
 │   ├── tasks.json             # Build tasks
 │   ├── launch.json            # Debug configuration
 │   └── extensions.json        # Recommended extensions
+├── Dockerfile                 # Multi-stage Docker build
+├── docker-compose.yml         # Docker orchestration
+├── .dockerignore              # Docker build exclusions
+├── .env.example               # Environment variables template
 ├── .editorconfig              # Code formatting rules
 ├── .gitignore                 # Git ignore patterns
 ├── CHANGELOG.md               # Version history
@@ -85,13 +88,18 @@ GitChangesAnalyzer/
 ## 🚀 Build System
 
 ### Scripts
-- `scripts/build.sh` - Unix/Linux build script
-- `scripts/build.bat` - Windows build script
-- `scripts/clean.sh` - Unix/Linux clean script
-- `scripts/clean.bat` - Windows clean script
-- `scripts/setup.sh` - Unix/Linux setup script
-- `scripts/setup.bat` - Windows setup script
+- `scripts/build.sh` & `scripts/build.bat` - Cross-platform build scripts
+- `scripts/clean.sh` & `scripts/clean.bat` - Cross-platform clean scripts
+- `scripts/setup.sh` & `scripts/setup.bat` - Cross-platform setup scripts
+- `scripts/docker-build.sh` & `scripts/docker-build.bat` - Docker image build
+- `scripts/docker-run.sh` & `scripts/docker-run.bat` - Docker container execution
 - `Makefile` - Cross-platform make commands
+
+### Docker Deployment
+- `Dockerfile` - Multi-stage Docker build configuration
+- `docker-compose.yml` - Container orchestration for development and production
+- `.dockerignore` - Files excluded from Docker build context
+- `.env.example` - Environment variables template for Docker deployment
 
 ### CI/CD
 - GitHub Actions workflow (`.github/workflows/dotnet.yml`)

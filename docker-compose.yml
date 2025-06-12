@@ -1,0 +1,53 @@
+# Docker Compose for GitChangesAnalyzer
+# Provides easy development and production deployment
+
+version: '3.8'
+
+services:
+  gitchangesanalyzer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: final
+    image: gitchangesanalyzer:latest
+    container_name: gitchangesanalyzer
+    volumes:
+      # Mount your git repository here
+      - ${GIT_REPO_PATH:-./}:/workspace:ro
+      # Mount output directory for reports
+      - ${OUTPUT_PATH:-./output}:/app/output
+    environment:
+      - DOTNET_ENVIRONMENT=Production
+    # Override default command to analyze a specific commit
+    # command: ["--commit", "${COMMIT_HASH}", "--verbose"]
+    
+  # Development service with additional tools
+  gitchangesanalyzer-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: build
+    image: gitchangesanalyzer:dev
+    container_name: gitchangesanalyzer-dev
+    volumes:
+      - .:/src
+      - ${GIT_REPO_PATH:-./}:/workspace
+      - ${OUTPUT_PATH:-./output}:/app/output
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+    working_dir: /src
+    command: ["tail", "-f", "/dev/null"]  # Keep container running for development
+
+  # Test runner service
+  gitchangesanalyzer-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    image: gitchangesanalyzer:test
+    container_name: gitchangesanalyzer-test
+    volumes:
+      - .:/src
+    environment:
+      - DOTNET_ENVIRONMENT=Test
+    command: ["dotnet", "test", "--configuration", "Release", "--verbosity", "normal"]

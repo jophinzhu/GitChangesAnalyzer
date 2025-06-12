@@ -471,6 +471,10 @@ reports/
 *.swo
 *~
 
+# Docker
+.env
+docker-compose.override.yml
+
 # OS generated files
 .DS_Store
 .DS_Store?

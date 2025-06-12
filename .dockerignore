@@ -1,0 +1,64 @@
+# Docker ignore file for GitChangesAnalyzer
+# Excludes unnecessary files from Docker build context
+
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation (not needed in container)
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+docs/
+*.md
+
+# Build outputs (will be built inside container)
+bin/
+obj/
+publish/
+
+# IDE and editor files
+.vs/
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Output files (will be generated in container)
+output/
+*.log
+*.tmp
+
+# Test results
+TestResults/
+test-results/
+
+# Package files
+*.nupkg
+*.snupkg
+
+# Docker files (avoid recursion)
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Scripts (not needed in runtime)
+scripts/
+samples/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Temporary files
+tmp/
+temp/
