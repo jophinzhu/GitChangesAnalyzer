@@ -1,0 +1,69 @@
+# Common file patterns to include in analysis
+
+# C# files
+*.cs
+
+# XML files
+*.xml
+*.config
+*.xaml
+*.xsl
+*.xslt
+
+# Web files
+*.html
+*.css
+*.js
+*.ts
+*.json
+
+# Documentation
+*.md
+*.txt
+*.rst
+
+# Python files
+*.py
+
+# Java files
+*.java
+
+# SQL files
+*.sql
+
+# Shell scripts
+*.sh
+*.bat
+*.ps1
+*.cmd
+
+# Configuration files
+*.ini
+*.conf
+*.properties
+*.yaml
+*.yml
+
+# Source code files
+*.cpp
+*.c
+*.h
+*.hpp
+
+# Ruby files
+*.rb
+
+# PHP files
+*.php
+
+# Go files
+*.go
+
+# Rust files
+*.rs
+
+# Swift files
+*.swift
+
+# Kotlin files
+*.kt

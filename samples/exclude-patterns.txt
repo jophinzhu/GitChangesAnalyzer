@@ -1,0 +1,68 @@
+# Common file patterns to exclude from analysis
+
+# Build and output directories
+bin/*
+obj/*
+out/*
+publish/*
+dist/*
+build/*
+
+# Generated files
+*.designer.cs
+*.g.cs
+*.g.i.cs
+*AssemblyInfo.cs
+*.Designer.cs
+GlobalAssemblyInfo.cs
+
+# Package management
+packages/*
+node_modules/*
+.nuget/*
+
+# IDE and editor files
+.vs/*
+.vscode/*
+.idea/*
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Log files
+*.log
+logs/*
+
+# Temporary files
+*.tmp
+*.temp
+temp/*
+
+# Documentation generation
+_site/*
+.jekyll-cache/*
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Compiled libraries
+*.dll
+*.so
+*.dylib
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
