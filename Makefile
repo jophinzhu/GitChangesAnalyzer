@@ -1,14 +1,20 @@
-.PHONY: build test clean restore publish help
+.PHONY: build test clean restore publish setup help
 
 # Default target
 help:
 	@echo "Available targets:"
+	@echo "  setup     - Setup development environment"
 	@echo "  build     - Build the project"
 	@echo "  test      - Run tests"
 	@echo "  clean     - Clean build artifacts"
 	@echo "  restore   - Restore dependencies"
 	@echo "  publish   - Create publish build"
 	@echo "  help      - Show this help"
+
+# Setup development environment
+setup:
+	@echo "Setting up development environment..."
+	@./scripts/setup.sh || ./scripts/setup.bat
 
 # Restore dependencies
 restore:
@@ -24,8 +30,8 @@ test: build
 
 # Clean build artifacts
 clean:
-	dotnet clean
-	rm -rf bin/ obj/ publish/ output/
+	@echo "Cleaning build artifacts..."
+	@./scripts/clean.sh || ./scripts/clean.bat
 
 # Create publish build
 publish: build

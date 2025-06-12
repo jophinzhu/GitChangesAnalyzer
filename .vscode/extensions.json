@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-vscode.powershell",
+        "editorconfig.editorconfig",
+        "github.vscode-github-actions",
+        "ms-vscode.makefile-tools"
+    ]
+}
